@@ -1,0 +1,47 @@
+<ng-content></ng-content>
+<div class="content-img"
+     (mouseleave)="stateType='none'; crop();"
+     (mouseup)="stateType='none'; crop();"
+     (mouseenter)="stateType='none'; crop();"
+     (mousemove)="moveImg($event);"
+     (dblclick)="center();"
+>
+    <div class="_img"
+         [class.NoNe]="imgDataUrl==undefined || imgDataUrl==null"
+         [style.top.px]="_top"
+         [style.left.px]="_left"
+         [bg]="'primary'"
+         [color]="'primary'"
+         (mousedown)="stateType='move'; startMove($event)"
+         (mouseup)="stateType='none'"
+    >
+        <img
+                [src]="imgDataUrl"
+        >
+        <span
+                class="r_nw"
+                (mousedown)="stateType='resize'; stateR='nw'"
+                (mouseup)="stateType='none'"
+        ></span>
+        <span
+                class="r_ne"
+                (mousedown)="stateType='resize'; stateR='ne'"
+                (mouseup)="stateType='none'"
+        ></span>
+        <span
+                class="r_se"
+                (mousedown)="stateType='resize'; stateR='se'"
+                (mouseup)="stateType='none'"
+        ></span>
+        <span
+                class="r_sw"
+                (mousedown)="stateType='resize'; stateR='sw'"
+                (mouseup)="stateType='none'"
+        ></span>
+    </div>
+    <div class="resize"
+         [style.width.px]="sizeW"
+         [style.height.px]="sizeH"
+    >
+    </div>
+</div>

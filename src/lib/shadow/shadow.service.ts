@@ -2,7 +2,6 @@ import { Injectable }       from '@angular/core';
 import { toPositiveNumber } from './toPositiveNumber';
 import { converterToHex }         from 'alyle-ui/core';
 import { DomSanitizer, SafeStyle } from '@angular/platform-browser';
-import chroma from 'chroma-js';
 
 @Injectable()
 export class LyShadowService {
@@ -11,7 +10,7 @@ export class LyShadowService {
   ) { }
   shadow(color: string, size: number) {
     const sizeOrigin = size;
-    const _color = chroma(converterToHex(chroma(color).css('hsl'))).get('rgba');
+    const _color = [226, 226, 226];
     size = toPositiveNumber(size);
     let style = `
     rgba(${_color[0]}, ${_color[1]}, ${_color[2]}, ${
